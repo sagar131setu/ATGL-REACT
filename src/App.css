@@ -8,11 +8,13 @@ body {
 
 #root {
   height: 100%;
+  overflow: hidden;
 }
 
 .container {
   display: flex;
   height: 100%;
+  overflow: hidden;
 }
 
 .content {

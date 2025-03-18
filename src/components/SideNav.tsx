@@ -3,7 +3,7 @@ import { NavLink } from "react-router-dom";
 
 const sideNavStyles = `
 .side-nav {
-  width: 242px;
+  width: 256px;
   height: calc(100vh - 48px) !important;
   background: #ffffff;
   padding: 12px 0;
@@ -17,14 +17,16 @@ const sideNavStyles = `
 }
 
 .side-nav-container {
-  width: 226px;
+  width: 226px ! important;
   display: flex;
+  max-width: 226px ! important;
   flex-direction: column;
   padding: 6px 8px;
 }
 
 .side-nav-container ul {
   list-style: none;
+  width: 226px;
   padding: 0;
   margin: 0;
 }
@@ -33,17 +35,21 @@ const sideNavStyles = `
   display: flex;
   align-items: center;
   gap: 12px;
+  font-family: Adani;
+  font-weight:500;
   padding: 6px 8px;
-  font-size: 16px;
-  font-weight: 500;
+  font-size: 14px;
+  line-height: 24px;
+  letter-spacing: 0%;
   white-space: nowrap;
   cursor: pointer;
   border-radius: 4px;
   transition: background 0.3s ease-in-out, color 0.3s ease-in-out;
   color: #040404;
-  width: calc(226px - 16px);
+  width: calc(242px - 16px) !important;
   height: 36px;
 }
+
 
 .menu-item:hover {
   background: rgba(13, 103, 202, 0.1);
@@ -52,8 +58,10 @@ const sideNavStyles = `
 .menu-item.active {
   background: #0d67ca !important;
   color: white !important;
+ width: 226px !important;
   font-weight: bold !important;
 }
+
 
 .menu-item.active img {
   filter: brightness(0) invert(1);
@@ -61,10 +69,14 @@ const sideNavStyles = `
 
 .sub-menu {
   padding-left: 36px;
-  font-size: 14px;
-  font-weight: 400;
+  font-family: Adani;
+  font-size: 1px;
+  font-weight: 500;
+  letter-spacing: 0%;
+  line-height: 24px;
   display: flex;
   color: #040404;
+  top: 8;
   flex-direction: column;
   gap: 4px;
 }
@@ -129,7 +141,7 @@ border-radius: 4px;
   width: 24px;
   height: 24px;
   transition: transform 0.3s ease-in-out;
-  padding-left: 88px;
+  padding-left: 80px;
 }
 
 .rotate {
