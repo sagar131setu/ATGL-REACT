@@ -2,12 +2,13 @@ html,
 body {
   height: 100%;
   margin: 0;
-  padding: 0;
+
   overflow: hidden;
 }
 
 #root {
   height: 100%;
+  margin: 0;
   overflow: hidden;
 }
 
@@ -15,7 +16,10 @@ body {
   display: flex;
   height: 100%;
   overflow: hidden;
+  scrollbar-width: none;
+
 }
+
 
 .content {
   margin-left: 242px;

@@ -6,14 +6,14 @@ const Permissions: React.FC = () => {
     display: "flex",
     flexDirection: "column",
     width: "100%",
-    height: "100vh",
+    height: "100%",
     overflow: "hidden",
   };
 
   const iframeStyle: React.CSSProperties = {
     flexGrow: 1,
     border: "none",
-    overflow: "hidden",
+    
   };
 
   return (
