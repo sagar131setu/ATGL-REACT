@@ -24,6 +24,26 @@ const App: React.FC = () => {
             <Route path="/dashboard" element={<Dashboard />} />
             <Route path="/project-progress" element={<ProjectProgress />} />
             <Route path="/permissions" element={<Permissions />} />
+            <Route
+              path="/asset-portfolio"
+              element={<div>Asset Portfolio</div>}
+            />
+            <Route
+              path="/customer-portfolio"
+              element={<div>Customer Portfolio</div>}
+            />
+            <Route path="/volumetrics" element={<div>Volumetrics</div>} />
+            <Route
+              path="/digitalization-index"
+              element={<div>Digitalization Index</div>}
+            />
+            <Route path="/luag" element={<div>LUAG</div>} />
+            <Route path="/command-center" element={<div>Command Center</div>} />
+            <Route path="/maintenance" element={<div>Maintenance</div>} />
+            <Route
+              path="/vendor-performance"
+              element={<div>Vendor Performance</div>}
+            />
           </Routes>
         </main>
       </div>

@@ -48,6 +48,8 @@ const sideNavStyles = `
   color: #040404;
   width: calc(242px - 16px) !important;
   height: 36px;
+  padding-left: 0px;
+  margin-bottom: 12px;
 }
 
 
@@ -104,7 +106,7 @@ const sideNavStyles = `
   padding-top: 15px;
 border-radius: 4px;
   height: 36px;
-  padding-left: 45px;
+  padding-left: 35px;
   width: 100%;
 }
 
@@ -123,6 +125,7 @@ border-radius: 4px;
   padding-top: 15px;
   justify-content: flex-start;
   border-radius: 4px;
+  height: 36px;
 }
 
 .sub-menu li.active a {
@@ -141,7 +144,7 @@ border-radius: 4px;
   width: 24px;
   height: 24px;
   transition: transform 0.3s ease-in-out;
-  padding-left: 80px;
+  margin-left: auto;
 }
 
 .rotate {
@@ -155,9 +158,19 @@ border-radius: 4px;
 
 const SideNav: React.FC = () => {
   const [isProjectsExpanded, setIsProjectsExpanded] = useState(false);
+  const [isOverviewExpanded, setIsOverviewExpanded] = useState(false);
+  const [isOperationsExpanded, setIsOperationsExpanded] = useState(false);
 
   const toggleProjectsMenu = () => {
     setIsProjectsExpanded(!isProjectsExpanded);
+  };
+
+  const toggleOverviewMenu = () => {
+    setIsOverviewExpanded(!isOverviewExpanded);
+  };
+
+  const toggleOperationsMenu = () => {
+    setIsOperationsExpanded(!isOperationsExpanded);
   };
 
   return (
@@ -166,6 +179,55 @@ const SideNav: React.FC = () => {
       <div className="side-nav">
         <div className="side-nav-container">
           <ul className="sub-menu">
+            <li className="menu-item clickable" onClick={toggleOverviewMenu}>
+              <img
+                src="/assets/business-development.png"
+                className="nav-icon"
+                alt="Overview"
+              />
+              <span>Overview</span>
+              <img
+                src="/assets/Vector.png"
+                className={`expand-icon ${isOverviewExpanded ? "rotate" : ""}`}
+                alt="Expand"
+              />
+            </li>
+            {isOverviewExpanded && (
+              <ul className="sub-menu">
+                <li>
+                  <NavLink
+                    to="/asset-portfolio"
+                    className={({ isActive }) => (isActive ? "active" : "")}
+                  >
+                    Asset Portfolio
+                  </NavLink>
+                </li>
+                <li>
+                  <NavLink
+                    to="/customer-portfolio"
+                    className={({ isActive }) => (isActive ? "active" : "")}
+                  >
+                    Customer Portfolio
+                  </NavLink>
+                </li>
+                <li>
+                  <NavLink
+                    to="/volumetrics"
+                    className={({ isActive }) => (isActive ? "active" : "")}
+                  >
+                    Volumetrics
+                  </NavLink>
+                </li>
+                <li>
+                  <NavLink
+                    to="/digitalization-index"
+                    className={({ isActive }) => (isActive ? "active" : "")}
+                  >
+                    Digitalization Index
+                  </NavLink>
+                </li>
+              </ul>
+            )}
             <NavLink
               to="/business-development"
               className={({ isActive }) =>
@@ -181,29 +243,19 @@ const SideNav: React.FC = () => {
                 <span>Business Development</span>
               </li>
             </NavLink>
-            <NavLink
-              to="/projects"
-              className={({ isActive }) =>
-                isActive ? "menu-item active clickable" : "menu-item clickable"
-              }
-              onClick={toggleProjectsMenu}
-            >
-              <li className="menu-item">
-                <img
-                  src="/assets/projects.png"
-                  className="nav-icon"
-                  alt="Projects"
-                />
-                <span>Projects</span>
-                <img
-                  src="/assets/Vector.png"
-                  className={`expand-icon ${
-                    isProjectsExpanded ? "rotate" : ""
-                  }`}
-                  alt="Expand"
-                />
-              </li>
-            </NavLink>
+            <li className="menu-item clickable" onClick={toggleProjectsMenu}>
+              <img
+                src="/assets/projects.png"
+                className="nav-icon"
+                alt="Projects"
+              />
+              <span>Projects</span>
+              <img
+                src="/assets/Vector.png"
+                className={`expand-icon ${isProjectsExpanded ? "rotate" : ""}`}
+                alt="Expand"
+              />
+            </li>
             {isProjectsExpanded && (
               <ul className="sub-menu">
                 <li>
@@ -224,21 +276,57 @@ const SideNav: React.FC = () => {
                 </li>
               </ul>
             )}
-            <NavLink
-              to="/operations-maintenance"
-              className={({ isActive }) =>
-                isActive ? "menu-item active" : "menu-item"
-              }
-            >
-              <li className="menu-item">
-                <img
-                  src="/assets/operation.png"
-                  className="nav-icon"
-                  alt="Operations & Maintenance"
-                />
-                <span>Operations & Maintenance</span>
-              </li>
-            </NavLink>
+            <li className="menu-item clickable" onClick={toggleOperationsMenu}>
+              <img
+                src="/assets/operation.png"
+                className="nav-icon"
+                alt="Operations & Maintenance"
+              />
+              <span>Operations & Maintenance</span>
+              <img
+                src="/assets/Vector.png"
+                className={`expand-icon ${
+                  isOperationsExpanded ? "rotate" : ""
+                }`}
+                alt="Expand"
+              />
+            </li>
+            {isOperationsExpanded && (
+              <ul className="sub-menu">
+                <li>
+                  <NavLink
+                    to="/luag"
+                    className={({ isActive }) => (isActive ? "active" : "")}
+                  >
+                    LUAG
+                  </NavLink>
+                </li>
+                <li>
+                  <NavLink
+                    to="/command-center"
+                    className={({ isActive }) => (isActive ? "active" : "")}
+                  >
+                    Command Center
+                  </NavLink>
+                </li>
+                <li>
+                  <NavLink
+                    to="/maintenance"
+                    className={({ isActive }) => (isActive ? "active" : "")}
+                  >
+                    Maintenance
+                  </NavLink>
+                </li>
+                <li>
+                  <NavLink
+                    to="/vendor-performance"
+                    className={({ isActive }) => (isActive ? "active" : "")}
+                  >
+                    Vendor Performance
+                  </NavLink>
+                </li>
+              </ul>
+            )}
             <NavLink
               to="/customer-service"
               className={({ isActive }) =>
