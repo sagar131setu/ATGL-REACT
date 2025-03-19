@@ -41,7 +41,7 @@ const sideNavStyles = `
   font-size: 14px;
   line-height: 24px;
   letter-spacing: 0%;
-  white-space: nowrap;
+  white-space: normal;
   cursor: pointer;
   border-radius: 4px;
   transition: background 0.3s ease-in-out, color 0.3s ease-in-out;
@@ -49,9 +49,11 @@ const sideNavStyles = `
   width: calc(242px - 16px) !important;
   height: 36px;
   padding-left: 0px;
-  margin-bottom: 12px;
+  margin-bottom: 0px;
 }
-
+.menu-item + .menu-item {
+  margin-top: 12px;
+}
 
 .menu-item:hover {
   background: rgba(13, 103, 202, 0.1);
@@ -61,7 +63,7 @@ const sideNavStyles = `
   background: #0d67ca !important;
   color: white !important;
  width: 226px !important;
-  font-weight: bold !important;
+  font-weight: 500;
 }
 
 
@@ -88,7 +90,7 @@ const sideNavStyles = `
   align-items: center;
   padding: 6px 8px;
   font-size: 14px;
-  font-weight: 400;
+  font-weight: 500;
   cursor: pointer;
   width: calc(226px - 16px);
   height: 36px;
@@ -122,10 +124,10 @@ border-radius: 4px;
   color: white !important;
   font-weight: 400;
   align-items: center;
-  padding-top: 15px;
+  padding-top: 12px;
   justify-content: flex-start;
   border-radius: 4px;
-  height: 36px;
+  height: 30px;
 }
 
 .sub-menu li.active a {
@@ -160,6 +162,7 @@ const SideNav: React.FC = () => {
   const [isProjectsExpanded, setIsProjectsExpanded] = useState(false);
   const [isOverviewExpanded, setIsOverviewExpanded] = useState(false);
   const [isOperationsExpanded, setIsOperationsExpanded] = useState(false);
+  const [isBusinessExpanded, setIsBusinessExpanded] = useState(false);
 
   const toggleProjectsMenu = () => {
     setIsProjectsExpanded(!isProjectsExpanded);
@@ -172,6 +175,11 @@ const SideNav: React.FC = () => {
   const toggleOperationsMenu = () => {
     setIsOperationsExpanded(!isOperationsExpanded);
   };
+
+  const toggleBusinessMenu = () => {
+    setIsBusinessExpanded(!isBusinessExpanded);
+  };
+  
 
   return (
     <>
@@ -228,21 +236,32 @@ const SideNav: React.FC = () => {
                 </li>
               </ul>
             )}
-            <NavLink
-              to="/business-development"
-              className={({ isActive }) =>
-                isActive ? "menu-item active" : "menu-item"
-              }
-            >
-              <li className="menu-item">
-                <img
-                  src="/assets/business-development.png"
-                  className="nav-icon"
-                  alt="Business Development"
-                />
-                <span>Business Development</span>
-              </li>
-            </NavLink>
+            <li className="menu-item clickable" onClick={toggleBusinessMenu}>
+  <img
+    src="/assets/business-development.png"
+    className="nav-icon"
+    alt="Business Development"
+  />
+  <span>Business Development</span>
+  <img
+    src="/assets/Vector.png"
+    className={`expand-icon ${isBusinessExpanded ? "rotate" : ""}`}
+    alt="Expand"
+  />
+</li>
+{isBusinessExpanded && (
+  <ul className="sub-menu">
+    <li>
+      <NavLink
+        to="/dpng"
+        className={({ isActive }) => (isActive ? "active" : "")}
+      >
+        D-PNG
+      </NavLink>
+    </li>
+  </ul>
+)}
+
             <li className="menu-item clickable" onClick={toggleProjectsMenu}>
               <img
                 src="/assets/projects.png"
@@ -396,6 +415,21 @@ const SideNav: React.FC = () => {
                   alt="HR & Admin"
                 />
                 <span>HR & Admin</span>
+              </li>
+            </NavLink>
+            <NavLink
+              to="/it"
+              className={({ isActive }) =>
+                isActive ? "menu-item active" : "menu-item"
+              }
+            >
+              <li className="menu-item">
+                <img
+                  src="/assets/hr-admin.png"
+                  className="nav-icon"
+                  alt="IT"
+                />
+                <span>IT</span>
               </li>
             </NavLink>
           </ul>

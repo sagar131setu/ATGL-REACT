@@ -10,6 +10,7 @@ import ProjectProgress from "./components/ProjectProgress";
 import Permissions from "./components/Permissions";
 import Dashboard from "./components/Dashboard";
 import SideNav from "./components/SideNav";
+import Dpng from "./components/Dpng";
 import "./App.css";
 
 const App: React.FC = () => {
@@ -24,6 +25,7 @@ const App: React.FC = () => {
             <Route path="/dashboard" element={<Dashboard />} />
             <Route path="/project-progress" element={<ProjectProgress />} />
             <Route path="/permissions" element={<Permissions />} />
+            <Route path="/dpng" element={<Dpng />} />
             <Route
               path="/asset-portfolio"
               element={<div>Asset Portfolio</div>}
@@ -43,6 +45,10 @@ const App: React.FC = () => {
             <Route
               path="/vendor-performance"
               element={<div>Vendor Performance</div>}
+            />
+            <Route
+              path="/it"
+              element={<div>IT</div>}
             />
           </Routes>
         </main>
