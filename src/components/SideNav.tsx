@@ -3,7 +3,7 @@ import { NavLink } from "react-router-dom";
 
 const sideNavStyles = `
 .side-nav {
-  width: 256px;
+  width: 300px;
   height: calc(100vh - 48px) !important;
   background: #ffffff;
   padding: 12px 0;
@@ -17,7 +17,7 @@ const sideNavStyles = `
 }
 
 .side-nav-container {
-  width: 226px ! important;
+  width: 280px ! important;
   display: flex;
   max-width: 226px ! important;
   flex-direction: column;
@@ -46,7 +46,7 @@ const sideNavStyles = `
   border-radius: 4px;
   transition: background 0.3s ease-in-out, color 0.3s ease-in-out;
   color: #040404;
-  width: calc(242px - 16px) !important;
+  width: calc(290px - 20px) !important;
   height: 36px;
   padding-left: 0px;
   margin-bottom: 0px;
@@ -56,11 +56,11 @@ const sideNavStyles = `
 }
 
 .menu-item:hover {
-  background: rgba(13, 103, 202, 0.1);
+  // background: rgba(13, 103, 202, 0.1);
 }
 
 .menu-item.active {
-  background: #0d67ca !important;
+  // background: #0d67ca !important;
   color: white !important;
  width: 226px !important;
   font-weight: 500;
@@ -89,7 +89,7 @@ const sideNavStyles = `
   display: flex;
   align-items: center;
   padding: 6px 8px;
-  font-size: 14px;
+  font-size: 18px;
   font-weight: 500;
   cursor: pointer;
   width: calc(226px - 16px);
@@ -162,7 +162,8 @@ const SideNav: React.FC = () => {
   const [isProjectsExpanded, setIsProjectsExpanded] = useState(false);
   const [isOverviewExpanded, setIsOverviewExpanded] = useState(false);
   const [isOperationsExpanded, setIsOperationsExpanded] = useState(false);
-  const [isBusinessExpanded, setIsBusinessExpanded] = useState(false);
+  const [isBusinessExpanded, setIsBusinessExpanded] = useState(true);
+  const [isPermissionsExpanded, setIsPermissionsExpanded] = useState(false);
 
   const toggleProjectsMenu = () => {
     setIsProjectsExpanded(!isProjectsExpanded);
@@ -179,7 +180,10 @@ const SideNav: React.FC = () => {
   const toggleBusinessMenu = () => {
     setIsBusinessExpanded(!isBusinessExpanded);
   };
-  
+
+  const togglePermissionsMenu = () => {
+    setIsPermissionsExpanded(!isPermissionsExpanded);
+  };
 
   return (
     <>
@@ -189,7 +193,7 @@ const SideNav: React.FC = () => {
           <ul className="sub-menu">
             <li className="menu-item clickable" onClick={toggleOverviewMenu}>
               <img
-                src="/assets/business-development.png"
+                src="/assets/overview.png"
                 className="nav-icon"
                 alt="Overview"
               />
@@ -237,30 +241,30 @@ const SideNav: React.FC = () => {
               </ul>
             )}
             <li className="menu-item clickable" onClick={toggleBusinessMenu}>
-  <img
-    src="/assets/business-development.png"
-    className="nav-icon"
-    alt="Business Development"
-  />
-  <span>Business Development</span>
-  <img
-    src="/assets/Vector.png"
-    className={`expand-icon ${isBusinessExpanded ? "rotate" : ""}`}
-    alt="Expand"
-  />
-</li>
-{isBusinessExpanded && (
-  <ul className="sub-menu">
-    <li>
-      <NavLink
-        to="/dpng"
-        className={({ isActive }) => (isActive ? "active" : "")}
-      >
-        D-PNG
-      </NavLink>
-    </li>
-  </ul>
-)}
+              <img
+                src="/assets/business-development.png"
+                className="nav-icon"
+                alt="Business Development"
+              />
+              <span>Business Development</span>
+              <img
+                src="/assets/Vector.png"
+                className={`expand-icon ${isBusinessExpanded ? "rotate" : ""}`}
+                alt="Expand"
+              />
+            </li>
+            {isBusinessExpanded && (
+              <ul className="sub-menu">
+                <li>
+                  <NavLink
+                    to="/dpng"
+                    className={({ isActive }) => (isActive ? "active" : "")}
+                  >
+                    D-PNG
+                  </NavLink>
+                </li>
+              </ul>
+            )}
 
             <li className="menu-item clickable" onClick={toggleProjectsMenu}>
               <img
@@ -285,14 +289,42 @@ const SideNav: React.FC = () => {
                     Project Progress
                   </NavLink>
                 </li>
-                <li>
-                  <NavLink
-                    to="/permissions"
-                    className={({ isActive }) => (isActive ? "active" : "")}
-                  >
-                    Permissions
-                  </NavLink>
+                <li
+                  className="menu-item clickable"
+                  onClick={togglePermissionsMenu}
+                  style={{ color: "#7f8286" }}
+                >
+                  <span style={{ paddingLeft: "35px" }}>Permissions</span>
+                  <img
+                    src="/assets/Vector.png"
+                    className={`expand-icon ${
+                      isPermissionsExpanded ? "rotate" : ""
+                    }`}
+                    alt="Expand"
+                  />
                 </li>
+                {isPermissionsExpanded && (
+                  <ul className="sub-menu">
+                    <li>
+                      <NavLink
+                        to="/permissions/peso"
+                        className={({ isActive }) => (isActive ? "active" : "")}
+                        style={{ paddingLeft: "50px", marginTop: "0px" }}
+                      >
+                        PESO
+                      </NavLink>
+                    </li>
+                    <li>
+                      <NavLink
+                        to="/permissions/pipeline"
+                        className={({ isActive }) => (isActive ? "active" : "")}
+                        style={{ paddingLeft: "50px" }}
+                      >
+                        Pipeline
+                      </NavLink>
+                    </li>
+                  </ul>
+                )}
               </ul>
             )}
             <li className="menu-item clickable" onClick={toggleOperationsMenu}>
@@ -424,11 +456,7 @@ const SideNav: React.FC = () => {
               }
             >
               <li className="menu-item">
-                <img
-                  src="/assets/hr-admin.png"
-                  className="nav-icon"
-                  alt="IT"
-                />
+                <img src="/assets/IT.png" className="nav-icon" alt="IT" />
                 <span>IT</span>
               </li>
             </NavLink>
